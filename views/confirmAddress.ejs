@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm your Address</title>
+</head>
+<body>
+    <h1>Confirm your Address</h1>
+    <div> We have detected your Address as <span><b><%= city %>.</b></span><br/> 
+          If correct,please select type of plant and confirm,<br/>
+           else please select your city and type of plant in the section below.
+        <br/><br/>
+     </div>
+    <form action="/confirmAddress" method="post">
+        <input type="hidden" id="city" name="city" value="<%= city %>"/>
+        <input type="hidden" id="formName" name="formName" value="confirm-detection"/>
+        <label for="plantType"> Select between Indoor/ Outdoor plants </label>
+        <select name="plantType">
+            <option value="indoor">Indoor</option>
+            <option value="outdoor">Outdoor</option>
+        </select>
+        <br/><br/>
+        <button type="submit">Confirm</button>
+    </form>
+     <br/>
+     <hr/>
+     <br/>
+     <h2> Select your city</h2>
+    <form action="/confirmAddress" method="post" id="confirm-city-selection">
+        <input type="hidden" id="formName" name="formName" value="confirm-city-selection"/>
+        <label for="state">Select State</label>
+        <select name="state" id="state">
+            <option value="" selected>Please select your city</option>
+            <option value="maharashtra">Maharashtra</option>
+            <option value="telangana">Telangana</option>
+        </select>
+        <br/><br/>
+        
+        <label for="city"> Select City</label>
+        <select name="city" id="city">
+        </select>
+        <br/><br/>
+        <label for="plantType"> Select between Indoor/ Outdoor plants </label>
+        <select name="plantType">
+            <option value="indoor">Indoor</option>
+            <option value="outdoor">Outdoor</option>
+        </select>
+        <br/><br/>
+        <button type="submit">Confirm</button>
+        <br/>
+    </form>
+</body>
+<script>
+    const cities ={"maharashtra":['Mumbai',
+'Pune',
+'Nagpur',
+'Thane',
+'Pimpri-Chinchwad',
+'Nashik',
+'Kalyan-Dombivli',
+'Vasai-Virar',
+'Aurangabad',
+'Navi Mumbai',
+'Solapur',
+'Mira-Bhayandar',
+'Bhiwandi-Nizampur',
+'Jalgaon',
+'Amravati',
+'Nanded-Waghala',
+'Kolhapur',
+'Ulhasnagar',
+'Sangli-Miraj-Kupwad',
+'Malegaon',
+'Akola',
+'Latur',
+'Dhule',
+'Ahmednagar',
+'Chandrapur',
+'Parbhani',
+'Ichalkaranji',
+'Jalna',
+'Ambarnath',
+'Bhusawal',
+'Panvel',
+'Badlapur',
+'Beed',
+'Gondia',
+'Satara',
+'Barshi',
+'Yavatmal',
+'Achalpur',
+'Osmanabad',
+'Nandurbar',
+'Wardha',
+'Udgir',
+'Hinganghat',
+],
+"telangana":["Hyderabad",
+"Warangal",
+"Nizamabad",
+"Khammam",
+"Karimnagar",
+"Ramagundam",
+"Mahabubnagar",
+"Nalgonda",
+"Adilabad",
+"Suryapet",
+"Miryalaguda",
+"Siddipet",
+"Jagtial",
+"Mancherial",
+"Armoor"
+]
+}
+    const stateSelectEle = document.getElementById("state");
+     stateSelectEle.addEventListener("change", handleChange);
+     
+     function handleChange(event){
+      const state = document.getElementById("state").value;
+      const citySelectEle = document.getElementById("city");
+      citySelectEle.innerHTML="";
+
+      
+      if(state!==""){
+        let citiesArr = cities[state];
+        for(let i=0; i<citiesArr.length; i++){
+            let city = citiesArr[i];
+            let optionEle = document.createElement("option");
+            optionEle.setAttribute("name",city);
+            optionEle.innerText=city
+            citySelectEle.appendChild(optionEle);
+        } 
+      }
+
+     
+     }
+</script>
+
+</html>

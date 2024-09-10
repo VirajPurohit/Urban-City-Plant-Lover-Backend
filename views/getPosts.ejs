@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Garden</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+        .grid-item {
+            border: 2px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .grid-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="image-grid"></div>
+    
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const gridContainer = document.getElementById('image-grid');
+
+    // Fetch data from the backend
+    fetch('http://localhost:5000/posts')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(post => {
+                // Create a div for each image
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('grid-item');
+                 console.log(post);
+                // Create an image element
+                const img = document.createElement('img');
+                img.src = post.pic.fileURL;
+                img.alt = 'Image';
+                
+                // Append the image to the grid item
+                gridItem.appendChild(img);
+                
+                // Append the grid item to the grid container
+                gridContainer.appendChild(gridItem);
+            });
+        })
+        .catch(error => console.error('Error fetching images:', error));
+});
+</script>
+</html>

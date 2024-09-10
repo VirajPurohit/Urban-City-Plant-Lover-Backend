@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban City Plant Lover User-Registration</title>
+  </head>
+  <body>
+    <h1>Urban City Plant Lover User-Registration</h1>
+    <form action="/new-user" method="post" enctype="multipart/form-data">
+      <label for="username">Enter your Username : </label>
+      <input type="text" name="username" required />
+      <br /><br />
+      <label for="password"> Enter your Password :</label>
+      <input type="password" name="password" required />
+      <br /><br />
+      <label for="email"> Enter your Email :</label>
+      <input type="email" name="email" required />
+      <br /><br />
+      <label for="profile_img">Upload your profile image :</label>
+      <input type="file" name="profile_img" id="profile_img" required />
+      <br /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

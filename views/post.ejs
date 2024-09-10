@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Upload Posts Page</title>
+</head>
+<body>
+    <h3>Upload an Image below:</h3>
+    <form method="post" action="/new-post" enctype="multipart/form-data">
+      <label for="img_title"> Image Title :</label>
+      <input type="text" name="img_title" id="img_title" size="50" required />
+      <br /><br />
+      <label for="img_file"> Select the file you wish to post:</label>
+      <input type="file" name="img_file" id="img_file" required />
+      <br /><br />
+      <label for="img_desc"> Image Description :</label><br />
+      <textarea
+        name="img_desc"
+        id="img_desc"
+        maxlength="250"
+        cols="70"
+        rows="10"
+      ></textarea>
+      <br /><br />
+      <label for="postedBy">Posted By</label>
+      <input type="text" id="postedBy" name="postedBy" />
+      <br />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+    
+</body>
+</html>
