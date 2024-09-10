@@ -16,15 +16,16 @@ const { initializePassportStratergy } = require("./utils/passport");
 
 const app = express();
 const server = http.createServer(app);
+const port = process.env.PORT || 5000;
 const io = socketIO(server, {
   cors: {
-    origin: ["http://localhost:3000", "http://localhost:5000"],
+    origin: ["http://localhost:3000", "http://localhost:5000", "*"],
     credentials: true,
   },
 });
 
-server.listen(5000, () => {
-  console.log("Server is listening on port 5000");
+server.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
 
 const connectRedis = async () => {
@@ -47,9 +48,9 @@ initializePassportStratergy(passport);
 
 app.use(express.static("./uploads"));
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
