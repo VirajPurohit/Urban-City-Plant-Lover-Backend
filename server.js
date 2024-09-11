@@ -56,7 +56,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 let corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:5000"],
+  origin: ["http://localhost:3000", "http://localhost:5000", "*"],
   methods: ["GET", "POST"],
   credentials: true,
 };
@@ -65,7 +65,7 @@ app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-type");
-  let allowedOrigins = ["http://localhost:3000", "http://localhost:5000"];
+  let allowedOrigins = ["http://localhost:3000", "http://localhost:5000", "*"];
   let origin = req.headers.origin;
 
   if (allowedOrigins.includes(origin)) {

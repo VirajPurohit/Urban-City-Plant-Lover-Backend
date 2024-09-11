@@ -7,7 +7,7 @@ function initializePassportStratergy(passport) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:5000/auth/google/callback", // The endpoint to which Google should redirect after successful login
+        callbackURL: `${process.env.GOOGLE_AUTH_CALLBACK_URL}/auth/google/callback`, // The endpoint to which Google should redirect after successful login
         scope: ["profile", "email"],
         passReqToCallback: true,
       },
