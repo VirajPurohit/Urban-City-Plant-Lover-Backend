@@ -27,6 +27,9 @@ const io = socketIO(server, {
 
 server.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
+  console.log(
+    `Server Details : , ${server.address().address}:${server.address().port}`
+  );
 });
 
 const connectRedis = async () => {
