@@ -25,7 +25,7 @@ const io = socketIO(server, {
   },
 });
 
-server.listen(port, () => {
+server.listen(port, "0.0.0.0", () => {
   console.log(`Server is listening on port ${port}`);
   console.log(
     `Server Details : , ${server.address().address}:${server.address().port}`
