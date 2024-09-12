@@ -49,9 +49,9 @@ initializePassportStratergy(passport);
 
 app.use(express.static("./uploads"));
 
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
