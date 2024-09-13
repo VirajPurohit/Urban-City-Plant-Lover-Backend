@@ -71,13 +71,16 @@ app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-type");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  // let allowedOrigins = ["http://localhost:3000", "http://localhost:5000", "*"];
-  // let origin = req.headers.origin;
 
-  // if (allowedOrigins.includes(origin)) {
-  //   res.setHeader("Access-Control-Allow-Origin", origin); // restrict it to the required domain
-  // }
+  let allowedOrigins = [
+    "https://urban-city-plant-lover.onrender.com/",
+    "https://urban-city-plant-lover-backend.onrender.com/",
+  ];
+  let origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin); // restrict it to the required domain
+  }
   next();
 });
 
