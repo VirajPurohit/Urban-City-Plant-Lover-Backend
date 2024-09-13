@@ -12,7 +12,6 @@ function initializePassportStratergy(passport) {
         passReqToCallback: true,
       },
       async function (req, accessToken, refreshToken, profile, done) {
-        console.log("Hello from PasReqCallback ", profile);
         try {
           let user = await Users.find({ username: profile.displayName });
           user = user.length !== 0 ? user[0] : null;
@@ -36,14 +35,12 @@ function initializePassportStratergy(passport) {
   );
 
   passport.serializeUser((user, done) => {
-    console.log("Hello from Serialize user ", user);
     process.nextTick(function () {
       done(null, user._id);
     });
   });
 
   passport.deserializeUser((userid, done) => {
-    console.log("Hello from Deseialize user", userid);
     process.nextTick(async function () {
       let userFrmDB = null;
       try {

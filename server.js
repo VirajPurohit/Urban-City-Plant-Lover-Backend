@@ -20,8 +20,8 @@ const port = process.env.PORT || 5000;
 const io = socketIO(server, {
   cors: {
     origin: [
-      "https://urban-city-plant-lover.onrender.com/",
-      "https://urban-city-plant-lover-backend.onrender.com/",
+      "https://urban-city-plant-lover.onrender.com",
+      "https://urban-city-plant-lover-backend.onrender.com",
     ],
     credentials: true,
   },
@@ -76,12 +76,6 @@ app.use((req, res, next) => {
     "https://urban-city-plant-lover-backend.onrender.com",
   ];
   let origin = req.headers.origin;
-  console.log(req.headers.origin);
-  console.log(
-    "Allowed origin includes origin : ",
-    allowedOrigins.includes(origin)
-  );
-
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin); // restrict it to the required domain
   }
