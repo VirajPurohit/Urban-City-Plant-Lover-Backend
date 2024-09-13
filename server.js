@@ -60,8 +60,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 let corsOptions = {
   origin: [
-    "https://urban-city-plant-lover.onrender.com/",
-    "https://urban-city-plant-lover-backend.onrender.com/",
+    "https://urban-city-plant-lover.onrender.com",
+    "https://urban-city-plant-lover-backend.onrender.com",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
@@ -72,8 +72,8 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-type");
 
   let allowedOrigins = [
-    "https://urban-city-plant-lover.onrender.com/",
-    "https://urban-city-plant-lover-backend.onrender.com/",
+    "https://urban-city-plant-lover.onrender.com",
+    "https://urban-city-plant-lover-backend.onrender.com",
   ];
   let origin = req.headers.origin;
   console.log(req.headers.origin);
