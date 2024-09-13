@@ -19,10 +19,7 @@ const server = http.createServer(app);
 const port = process.env.PORT || 5000;
 const io = socketIO(server, {
   cors: {
-    origin: [
-      "https://urban-city-plant-lover.onrender.com",
-      "https://urban-city-plant-lover-backend.onrender.com",
-    ],
+    origin: "https://urban-city-plant-lover.onrender.com",
     credentials: true,
   },
 });
