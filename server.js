@@ -19,17 +19,16 @@ const server = http.createServer(app);
 const port = process.env.PORT || 5000;
 const io = socketIO(server, {
   cors: {
-    // origin: ["http://localhost:3000", "http://localhost:5000", "*"],
-    origin: "*",
+    origin: [
+      "https://urban-city-plant-lover.onrender.com/",
+      "https://urban-city-plant-lover-backend.onrender.com/",
+    ],
     credentials: true,
   },
 });
 
 server.listen(port, "0.0.0.0", () => {
   console.log(`Server is listening on port ${port}`);
-  console.log(
-    `Server Details : , ${server.address().address}:${server.address().port}`
-  );
 });
 
 const connectRedis = async () => {
@@ -60,7 +59,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 let corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:5000", "*"],
+  origin: [
+    "https://urban-city-plant-lover.onrender.com/",
+    "https://urban-city-plant-lover-backend.onrender.com/",
+  ],
   methods: ["GET", "POST"],
   credentials: true,
 };
