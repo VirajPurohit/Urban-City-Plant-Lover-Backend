@@ -93,7 +93,7 @@ module.exports = (app, io) => {
     "/auth/google/callback",
     passport.authenticate("google", {
       failureRedirect: "/login/failed",
-      successRedirect: process.env.CLIENT_URL,
+      // successRedirect: process.env.CLIENT_URL,
     }),
     refreshToken
   );
