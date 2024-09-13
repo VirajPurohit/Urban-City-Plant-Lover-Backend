@@ -103,7 +103,7 @@ sessionStore.on("error", function (error) {
   console.log(error);
 });
 
-app.use("trust proxy");
+app.enable("trust proxy");
 
 app.use(
   session({
