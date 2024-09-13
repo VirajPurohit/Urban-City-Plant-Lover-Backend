@@ -67,7 +67,6 @@ let corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-type");
@@ -78,12 +77,18 @@ app.use((req, res, next) => {
   ];
   let origin = req.headers.origin;
   console.log(req.headers.origin);
+  console.log(
+    "Allowed origin includes origin : ",
+    allowedOrigins.includes(origin)
+  );
 
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin); // restrict it to the required domain
   }
   next();
 });
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
