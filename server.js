@@ -103,6 +103,8 @@ sessionStore.on("error", function (error) {
   console.log(error);
 });
 
+app.use("trust proxy");
+
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -111,7 +113,8 @@ app.use(
     store: sessionStore,
     cookie: {
       maxAge: 1000 * 60 * 20,
-      secure: false,
+      sameSite: "none",
+      secure: true,
     },
   })
 ); // gives access to req.session object
