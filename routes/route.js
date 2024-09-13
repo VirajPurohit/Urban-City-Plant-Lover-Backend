@@ -106,6 +106,7 @@ module.exports = (app, io) => {
   });
 
   Router.get("/auth/login/success", (req, res) => {
+    console.log(req);
     if (req.user) {
       console.log("From /auth/login/success route ", req.user);
       // req.session.user = req.user;
