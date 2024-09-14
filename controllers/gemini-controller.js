@@ -74,12 +74,20 @@ exports.getPlantId = async (req, res) => {
         req.file.path,
         "Urban_City_Plant_Lover/Plant_id_uploads/"
       );
-      decrementToken(userId);
-      res.status(200).send({
-        publicId: result.public_id,
-        fileURL: result.url,
-        response: geminiResponse.response,
-      });
+      if (geminiResponse.response.scientificName === "N/A") {
+        res.status(200).send({
+          publicId: result.public_id,
+          fileURL: result.url,
+          response: geminiResponse.response,
+        });
+      } else {
+        decrementToken(userId);
+        res.status(200).send({
+          publicId: result.public_id,
+          fileURL: result.url,
+          response: geminiResponse.response,
+        });
+      }
     }
   } catch (err) {
     return res.status(500).send({ msg: `Error: ${err}`, stack: err.stack });
