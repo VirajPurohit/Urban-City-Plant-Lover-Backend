@@ -36,6 +36,7 @@ async function refreshToken(req, res) {
           { $set: { tokens: 9, nextTokenUpdateDate: newTokenUpdateDate } },
           { new: true }
         );
+        console.log(data);
       }
       res.redirect(process.env.CLIENT_URL);
     }
