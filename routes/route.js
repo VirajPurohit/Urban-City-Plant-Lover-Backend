@@ -20,6 +20,7 @@ async function refreshToken(req, res) {
       let user = await Users.find({ _id: userID });
       user = user[0];
       // set today
+      console.log(data, user.username, user.nextTokenUpdateDate);
       let today = new Date();
       today.setHours(0, 0, 0, 0);
       let newTokenUpdateDate = null;
@@ -37,7 +38,7 @@ async function refreshToken(req, res) {
           { new: true },
           { strict: false }
         );
-        console.log(data);
+        console.log(data, user.username, user.nextTokenUpdateDate);
       }
       res.redirect(process.env.CLIENT_URL);
     }
