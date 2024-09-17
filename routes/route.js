@@ -20,7 +20,7 @@ async function refreshToken(req, res) {
       let user = await Users.find({ _id: userID });
       user = user[0];
       // set today
-      console.log(data, user.username, user.nextTokenUpdateDate);
+      console.log(user.username, user.nextTokenUpdateDate);
       let today = new Date();
       today.setHours(0, 0, 0, 0);
       let newTokenUpdateDate = null;
