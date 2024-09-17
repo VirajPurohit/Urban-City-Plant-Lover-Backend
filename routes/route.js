@@ -12,6 +12,7 @@ const Users = require("../models/user");
 let Router = require("express").Router();
 
 async function refreshToken(req, res) {
+  console.log("Hello from refresh token");
   try {
     if (req.user) {
       //Get user from DB using userid from session
