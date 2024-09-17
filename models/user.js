@@ -15,7 +15,7 @@ const userSchema = new Schema({
   tokens: { type: Number, default: 9, min: 0, max: 9 },
   nextTokenUpdateDate: {
     type: Date,
-    set: function () {
+    default: function () {
       let tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       tomorrow.setHours(0, 0, 0, 0);
