@@ -12,7 +12,6 @@ const Users = require("../models/user");
 let Router = require("express").Router();
 
 async function refreshToken(req, res) {
-  console.log("Hello from refresh token");
   try {
     if (req.user) {
       //Get user from DB using userid from session
@@ -20,7 +19,6 @@ async function refreshToken(req, res) {
       let user = await Users.find({ _id: userID });
       user = user[0];
       // set today
-      console.log(user.username, user.nextTokenUpdateDate);
       let today = new Date();
       today.setHours(0, 0, 0, 0);
       let newTokenUpdateDate = null;
@@ -38,7 +36,6 @@ async function refreshToken(req, res) {
           { new: true },
           { strict: false }
         );
-        console.log(data, user.username, user.nextTokenUpdateDate);
       }
       res.redirect(process.env.CLIENT_URL);
     }
