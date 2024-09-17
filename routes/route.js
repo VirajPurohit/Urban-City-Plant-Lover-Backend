@@ -34,7 +34,8 @@ async function refreshToken(req, res) {
         let data = await Users.findOneAndUpdate(
           { _id: userID },
           { $set: { tokens: 9, nextTokenUpdateDate: newTokenUpdateDate } },
-          { new: true }
+          { new: true },
+          { strict: false }
         );
         console.log(data);
       }
